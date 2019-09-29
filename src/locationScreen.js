@@ -1,51 +1,21 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Image, Button, ScrollView} from 'react-native';
-
+import firebase from 'react-native-firebase';
 
 class locationScreen extends Component {
-    render() {
+  onTestClick = ()=>{
+   const dbRef = firebase.database().ref("testdata")
+    dbRef.set("hello worlf from app")
+  }
+  
+  render() {
       return (
         <ScrollView>
           
         <View style={styles.container}>
           <View>
             <Text style={styles.welcome}>Welcome to Location!</Text>
-          </View>
-          <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
-          </View>
-          <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
-          </View>
-          <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
-          </View>
-          <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
-          </View>
-          <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
-          </View>
-          <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
-          </View>
-          <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
-          </View>
-          <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
-          </View>
-          <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
-          </View>
-          <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
-          </View>
-          <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
-          </View>
-          <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
+            <Button title={"Create test record"} onPress={this.onTestClick}></Button>
           </View>
         </View>
       </ScrollView>
@@ -61,10 +31,9 @@ class locationScreen extends Component {
       backgroundColor: '#F5FCFF',
     },
     welcome: {
-      fontSize: 20,
-      textAlign: 'center',
-      margin: 10,
-      marginTop: 50,
+      flex: 1,
+      alignItems:"center",
+      justifyContent:"center",
     },
     instructions: {
       textAlign: 'center',

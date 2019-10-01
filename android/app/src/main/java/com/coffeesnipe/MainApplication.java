@@ -3,9 +3,13 @@ package com.coffeesnipe;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.auth.RNFirebaseAuthPackage; 
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.swmansion.rnscreens.RNScreensPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
+import io.invertase.firebase.firestore.RNFirebaseFirestorePackage; 
+import io.invertase.firebase.database.RNFirebaseDatabasePackage;
 import com.swmansion.reanimated.ReanimatedPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -27,10 +31,14 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNFirebasePackage(),
             new VectorIconsPackage(),
             new RNScreensPackage(),
             new RNGestureHandlerPackage(),
-            new ReanimatedPackage()
+            new ReanimatedPackage(),
+            new RNFirebaseAuthPackage(),
+            new RNFirebaseFirestorePackage(),
+            new RNFirebaseDatabasePackage()
       );
     }
 

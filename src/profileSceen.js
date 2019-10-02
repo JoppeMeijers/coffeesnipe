@@ -4,20 +4,39 @@ import firebase from 'react-native-firebase';
 
 
 class profileScreen extends Component {
-    username = firebase.database().ref('Users/').on('value', function (snapshot) {
-        test = snapshot.val();
-       return test[1].Gebruikersnaam;
-     
-    });
-  render() {
+  constructor(props){
+    super(props);
+    this.state ={
+      users: []
+    }
+  }
 
+  getUserData = () => {
+    let ref = firebase.database().ref('Users');
+    ref.on('value' , snapshot =>{
+      const state = snapshot.val();
+      this.setState({users: state});
+    })
+   
+  }
+
+  componentDidMount(){
+    this.getUserData();
+  }
+
+  render() {
+    const {users} = this.state;
       return (
         <ScrollView>
           
         <View style={styles.container}>
           <View>
-           <Text>{this.username}</Text>
-
+          {
+            users
+            .map(user =>
+              <Text style={styles.welcome}>{user.Gebruikersnaam}</Text>
+           )
+          }
           </View>
         </View>
       </ScrollView>

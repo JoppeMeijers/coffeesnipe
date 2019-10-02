@@ -1,8 +1,15 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Image, Button, ScrollView} from 'react-native';
 import firebase from 'react-native-firebase';
+import {getUser} from './api/usersApi';
+
 
 class locationScreen extends Component {
+  state = {
+    username: ""
+  };
+
+
 
   onTestClick = ()=>{
    const dbRef = firebase.database().ref("testdata")
@@ -11,20 +18,29 @@ class locationScreen extends Component {
 
   readUserData =() => {
     console.log('test oke');
-    firebase.database().ref('Users/').on('value', function (snapshot) {
+    firebase.database().ref('/Users/1').on('value', function (snapshot) {
         test = snapshot.val();
-        username = test[1].Gebruikersnaam;
-        console.log(username);
+        this.setState({ username: test });
+        console.log(this.state.username);
     });
+  }
+
+
+componentDidMount() {
+
 }
-  
+
+
+
+
+
   render() {
       return (
         <ScrollView>
           
         <View style={styles.container}>
           <View>
-            <Text style={styles.welcome}>{this.test}</Text>
+            <Text style={styles.welcome}>{this.state.username}</Text>
             <Button title={"Create test record"} onPress={this.readUserData}></Button>
           </View>
         </View>
@@ -41,9 +57,7 @@ class locationScreen extends Component {
       backgroundColor: '#F5FCFF',
     },
     welcome: {
-      flex: 1,
-      alignItems:"center",
-      justifyContent:"center",
+      marginTop: 300,
     },
     instructions: {
       textAlign: 'center',

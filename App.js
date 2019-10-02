@@ -13,10 +13,13 @@ import IconLocation from './src/assets/images/location.png'
 
 import Logotitle from './src/components/logo';
 
+import {getUser} from './src/api/usersApi';
 
 
+console.log(getUser);
 
 const HomeStack = createStackNavigator({
+
     Home: {
       screen: HomeScreen,
       navigationOptions: {

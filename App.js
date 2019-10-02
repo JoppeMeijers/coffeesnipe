@@ -6,6 +6,7 @@ import {createBottomTabNavigator} from 'react-navigation-tabs';
 import HomeScreen from './src/homeScreen';
 import LocationScreen from './src/locationScreen';
 import CoffeeScreen from './src/coffeeloversScreen';
+import ProfileScreen from './src/profileSceen';
 
 import IconHome from './src/assets/images/home.png'
 import IconLocation from './src/assets/images/location.png'
@@ -67,6 +68,16 @@ const HomeStack = createStackNavigator({
       },
       })
     },
+    Profile: {
+        screen: ProfileScreen,
+        navigationOptions:({navigation})=>({
+          tabBarIcon:({focused,horizontal,tintColor})=>{
+          const {routeName} = navigation.state;
+    
+          return <Image source={IconLocation} style={{width:15,height:15}} />
+        },
+        })
+      },
   },{
     initialRouteName: 'Home'
   }) 

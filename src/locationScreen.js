@@ -3,10 +3,20 @@ import {Platform, StyleSheet, Text, View, Image, Button, ScrollView} from 'react
 import firebase from 'react-native-firebase';
 
 class locationScreen extends Component {
+
   onTestClick = ()=>{
    const dbRef = firebase.database().ref("testdata")
     dbRef.set("hello worlf from app")
   }
+
+  readUserData =() => {
+    console.log('test oke');
+    firebase.database().ref('Users/').on('value', function (snapshot) {
+        test = snapshot.val();
+        username = test[1].Gebruikersnaam;
+        console.log(username);
+    });
+}
   
   render() {
       return (
@@ -14,8 +24,8 @@ class locationScreen extends Component {
           
         <View style={styles.container}>
           <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
-            <Button title={"Create test record"} onPress={this.onTestClick}></Button>
+            <Text style={styles.welcome}>{this.test}</Text>
+            <Button title={"Create test record"} onPress={this.readUserData}></Button>
           </View>
         </View>
       </ScrollView>

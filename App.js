@@ -12,6 +12,11 @@ import IconHome from './src/assets/images/home.png'
 import IconLocation from './src/assets/images/location.png'
 
 import Logotitle from './src/components/logo';
+import Logo from './src/assets/images/header/logo-coffeesnipe.png';
+
+
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 import {getUser} from './src/api/usersApi';
 
@@ -23,7 +28,7 @@ const HomeStack = createStackNavigator({
     Home: {
       screen: HomeScreen,
       navigationOptions: {
-        headerTitle: Logotitle,
+        headerTitle: <Image source={Logo} />,
         headerStyle: {
           backgroundColor: '#7E4338',
   
@@ -37,7 +42,7 @@ const HomeStack = createStackNavigator({
     Snipe: {
       screen: CoffeeScreen,
       navigationOptions:{
-        headerTitle: Logotitle,
+          headerTitle: <Image source={Logo} />,
         headerStyle: {
           backgroundColor: '#7E4338',
         },
@@ -48,42 +53,65 @@ const HomeStack = createStackNavigator({
       }
     }
   });
+
+  const ProfileStack = createStackNavigator({
+
+    User: {
+        screen: ProfileScreen,
+        navigationOptions: {
+          headerTitle: <Image source={Logo} />,
+          headerStyle: {
+            backgroundColor: '#7E4338',
+    
+          },
+      
+         
+         
+          //header: null //this will hide the header
+        },
+      },
+
+    });
   
   const AppNavigator = createBottomTabNavigator({
     Home: {
       screen: HomeStack,
       navigationOptions:({navigation})=>({
-        tabBarIcon:({focused,horizontal,tintColor})=>{
-        const {routeName} = navigation.state;
-  
-        return <Image source={IconHome} style={{width:15,height:15}} />
-      },
+          tabBarLabel:"Home",
+          tabBarIcon: ({ tintColor }) => (
+              < Icon  name="home" size={22} color="#000"/>
+             )
+      }),
       header: null //this will hide the header
-      })
+  
     },
     Location: {
       screen: LocationScreen,
       navigationOptions:({navigation})=>({
-        tabBarIcon:({focused,horizontal,tintColor})=>{
-        const {routeName} = navigation.state;
+         tabBarLabel:"Locaties",
+          tabBarIcon: ({ tintColor }) => (
+          < Icon  name="map-marker" size={22} color="#000"/>
+          )
+      ,
+        headerTitle: <Image source={Logo} />,
+        headerStyle: {
+          backgroundColor: '#7E4338',
   
-        return <Image source={IconLocation} style={{width:15,height:15}} />
-      },
+        },
       })
     },
     Profile: {
-        screen: ProfileScreen,
-        navigationOptions:({navigation})=>({
-          tabBarIcon:({focused,horizontal,tintColor})=>{
-          const {routeName} = navigation.state;
-    
-          return <Image source={IconLocation} style={{width:15,height:15}} />
-        },
-        })
+        screen: ProfileStack ,
+        navigationOptions:{
+          tabBarLabel:"Profiel",
+          tabBarIcon: ({ tintColor }) => (
+            <Icon  name="user" size={22} color="#000"/>
+          )
+        }
       },
   },{
     initialRouteName: 'Home'
-  }) 
-  
+  });
+
 
   export default createAppContainer(AppNavigator);

@@ -33,8 +33,15 @@ class profileScreen extends Component {
           <View>
           {
             users
-            .map(user =>
-              <Text style={styles.welcome}>{user.Gebruikersnaam}</Text>
+            .map((user, i) =>
+              <View style={styles.welcome} key={i}>
+              <Text >{user.Naam}</Text>
+              <Text >{user.Gebruikersnaam}</Text>
+              <Text >{user.Mail}</Text>
+              <Text >{user.Telefoon}</Text>
+              <Text >{user.Locatie}</Text>
+              </View>
+              
            )
           }
           </View>

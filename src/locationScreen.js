@@ -1,51 +1,47 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Image, Button, ScrollView} from 'react-native';
+import firebase from 'react-native-firebase';
+import {getUser} from './api/usersApi';
 
 
 class locationScreen extends Component {
-    render() {
+  state = {
+    username: ""
+  };
+
+
+
+  onTestClick = ()=>{
+   const dbRef = firebase.database().ref("testdata")
+    dbRef.set("hello worlf from app")
+  }
+
+  readUserData =() => {
+    console.log('test oke');
+    firebase.database().ref('/Users/1').on('value', function (snapshot) {
+        test = snapshot.val();
+        this.setState({ username: test });
+        console.log(this.state.username);
+    });
+  }
+
+
+componentDidMount() {
+
+}
+
+
+
+
+
+  render() {
       return (
         <ScrollView>
           
         <View style={styles.container}>
           <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
-          </View>
-          <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
-          </View>
-          <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
-          </View>
-          <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
-          </View>
-          <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
-          </View>
-          <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
-          </View>
-          <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
-          </View>
-          <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
-          </View>
-          <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
-          </View>
-          <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
-          </View>
-          <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
-          </View>
-          <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
-          </View>
-          <View>
-            <Text style={styles.welcome}>Welcome to Location!</Text>
+            <Text style={styles.welcome}>{this.state.username}</Text>
+            <Button title={"Create test record"} onPress={this.readUserData}></Button>
           </View>
         </View>
       </ScrollView>
@@ -61,10 +57,7 @@ class locationScreen extends Component {
       backgroundColor: '#F5FCFF',
     },
     welcome: {
-      fontSize: 20,
-      textAlign: 'center',
-      margin: 10,
-      marginTop: 50,
+      marginTop: 300,
     },
     instructions: {
       textAlign: 'center',

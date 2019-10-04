@@ -43,7 +43,7 @@ class homeScreen extends Component {
             spots.map((l,i) =>(
           <TouchableOpacity onPress={() => this.props.navigation.navigate('Snipe',{key: i,name: l.name, location: l.location, img: l.img_url})} key={i}>  
             <ImageBackground source={l.img_url}  style={[styles.snipe, width]} >
-                <View  style={styles.snipeOverlay}>
+                <View  style={styles.snipeOverlay} key={i}>
                   <Text style={styles.snipeText}>{l.name}</Text>
                   <Text style={styles.snipeText}>{l.location}</Text>
                 </View>

@@ -7,6 +7,7 @@ import HomeScreen from './src/homeScreen';
 import LocationScreen from './src/locationScreen';
 import CoffeeScreen from './src/coffeeloversScreen';
 import ProfileScreen from './src/profileSceen';
+import ReviewScreen from './src/reviewScreen';
 
 import IconHome from './src/assets/images/home.png'
 import IconLocation from './src/assets/images/location.png'
@@ -70,6 +71,19 @@ const HomeStack = createStackNavigator({
           //header: null //this will hide the header
         },
       },
+    Review: {
+          screen: ReviewScreen,
+          navigationOptions:{
+              headerTitle: <Image source={Logo} />,
+            headerStyle: {
+              backgroundColor: '#7E4338',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }
+        }
 
     });
   

@@ -97,8 +97,9 @@ class CoffeeloverScreen extends Component {
         <ScrollView horizontal={true} style={styles.pictures}> 
         
         {
-          spots.map((l) => {
+          spots.map((l,i) => {
             if(l.imagesReviews){
+              
               return Object.keys(l.imagesReviews).map(key => <Image source={ l.imagesReviews[key] }></Image>)
             }
           })

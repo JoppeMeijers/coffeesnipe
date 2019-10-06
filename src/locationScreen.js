@@ -1,36 +1,31 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Image, Button, ScrollView} from 'react-native';
-import firebase from 'react-native-firebase';
-import {getUser} from './api/usersApi';
+import {Platform, StyleSheet, Text, View, Image, Button, ScrollView, Alert} from 'react-native';
+import RNShake from 'react-native-shake';
 
 
 class locationScreen extends Component {
-  state = {
-    username: ""
-  };
-
-
-
-  onTestClick = ()=>{
-   const dbRef = firebase.database().ref("testdata")
-    dbRef.set("hello worlf from app")
-  }
-
-  readUserData =() => {
-    console.log('test oke');
-    firebase.database().ref('/Users/1').on('value', function (snapshot) {
-        test = snapshot.val();
-        this.setState({ username: test });
-        console.log(this.state.username);
+  componentWillMount() {
+    RNShake.addEventListener('ShakeEvent', () => {
+      Alert.alert(
+        'Alert Title',
+        'My Alert Msg',
+        [
+          {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
+          {
+            text: 'Cancel',
+            onPress: () => console.log('Cancel Pressed'),
+            style: 'cancel',
+          },
+          {text: 'OK', onPress: () => console.log('OK Pressed')},
+        ],
+        {cancelable: false},
+      );
     });
   }
-
-
-componentDidMount() {
-
-}
-
-
+ 
+  componentWillUnmount() {
+    RNShake.removeEventListener('ShakeEvent');
+  }
 
 
 
@@ -40,8 +35,7 @@ componentDidMount() {
           
         <View style={styles.container}>
           <View>
-            <Text style={styles.welcome}>{this.state.username}</Text>
-            <Button title={"Create test record"} onPress={this.readUserData}></Button>
+            <Text style={styles.welcome}>Shake it</Text>
           </View>
         </View>
       </ScrollView>

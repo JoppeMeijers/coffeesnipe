@@ -6,13 +6,17 @@ import SafeAreaView from 'react-native-safe-area-view';
 
 
 class locationScreen extends Component {
-   quoteText = 'What goes best with a cup of coffee? Another cup';
-   person = 'Henry Rollins';
+  constructor(props){
+    super(props);
+    this.state ={
+      quoteText: 'What goes best with a cup of coffee? Another cup',
+      person:'Henry Rollins',
+    }
+  }
 
   componentWillMount() {
     RNShake.addEventListener('ShakeEvent', () => {
-      this.quoteText = 'My birthsone is a coffee bean.';
-      this.person = 'Raoul Frissen';
+      this.setState({quoteText:'My birthsone is a coffee bean.', person: 'Raoul Frissen'});
     });
   }
  
@@ -38,10 +42,10 @@ class locationScreen extends Component {
   < Icon style={styles.reviews} name="coffee" size={80} color="#696969"/>
   </View>
   < View style = {styles.quote} >
-    <Text style={styles.quoteText}>{this.quoteText} </Text>
+    <Text style={styles.quoteText}>{this.state.quoteText} </Text>
   </View>
   < View style = {styles.person} >
-    <Text style = {styles.personText}>- {this.person}</Text>
+    <Text style = {styles.personText}>- {this.state.person}</Text>
   </View>
  </View>
       </ScrollView>

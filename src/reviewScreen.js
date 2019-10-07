@@ -1,8 +1,14 @@
 import React, {Component} from 'react';
+<<<<<<< HEAD
+import {Platform, StyleSheet, Text, View, Image, Button, ScrollView} from 'react-native';
+import SafeAreaView from 'react-native-safe-area-view';
+import { Avatar, Divider, List, ListItem, Rating } from 'react-native-elements';
+=======
 import {Platform, StyleSheet, Text, View, Image,ScrollView} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import { Avatar, Divider,Button, List, ListItem, Rating } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
+>>>>>>> development
 
 
 
@@ -31,6 +37,21 @@ class reviewScreen extends Component {
         <ScrollView>
           <SafeAreaView>
         <View style={styles.container}>
+<<<<<<< HEAD
+            <Text>{this.subject}</Text>
+            <Text>{this.name}</Text>
+            <Text>{this.location}</Text>
+            <Text>{this.date}</Text>
+            <Rating 
+              type='star'
+              ratingCount={5}
+              imageSize={10}
+              startingValue={this.rating}
+            readonly
+            style={styles.rating}
+            />
+            <Text>{this.desc}</Text>
+=======
           <Text style={styles.locationName}>{this.name}</Text>  
           <Text style={styles.date}>{this.date}</Text>
            <Rating type='star' ratingCount={5} imageSize={10} startingValue={this.rating} readonly style={styles.rating} />
@@ -46,6 +67,7 @@ class reviewScreen extends Component {
             </View>
             <Button style={styles.changeButton}  title="Bewerk review" />
             <Button style={styles.changeButton}  title="Voeg foto toe" />
+>>>>>>> development
         </View>
         </SafeAreaView>
       </ScrollView>
@@ -56,6 +78,55 @@ class reviewScreen extends Component {
   const styles = StyleSheet.create({
     container: {
         flex: 1,
+<<<<<<< HEAD
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingTop: 20,
+    },
+    welcome:{
+      marginTop: 15,
+        color: 'black',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    userName:{
+      fontWeight: '800',
+    },
+      information:{
+        marginTop: 30,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        flex: 1,
+
+    },
+    block:{
+      marginLeft: 35,
+      marginRight: 35,
+      alignItems: 'center',
+      textAlign: 'center',
+    },
+    counting:{
+      marginTop: 10,
+      fontWeight: '800',
+      fontSize: 21,
+    },
+    title:{
+      color: '#000',  
+      textAlign: 'left',
+      fontSize: 15,
+      fontWeight: '600',
+      marginTop: 30,
+      marginLeft: 20,
+    },
+    reviews :{
+      marginLeft: 10,
+    },
+    rating:{
+        marginTop: 5,
+        marginBottom: 5,
+        alignItems: 'flex-start',
+      },
+=======
         padding: 30,
         paddingTop: 20,
     },
@@ -102,6 +173,7 @@ class reviewScreen extends Component {
       marginTop: 5,
       color: '#0000FF'
     }
+>>>>>>> development
   });
   
   export default reviewScreen;

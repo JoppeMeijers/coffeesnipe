@@ -1,4 +1,6 @@
 rootProject.name = 'Coffeesnipe'
+include ':react-native-shake'
+project(':react-native-shake').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-shake/android')
 include ':react-native-firebase'
 project(':react-native-firebase').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-firebase/android')
 include ':react-native-vector-icons'

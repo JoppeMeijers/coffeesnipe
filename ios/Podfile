@@ -21,6 +21,8 @@ target 'Coffeesnipe' do
   pod 'Fabric', '~> 1.10.2'
   pod 'Crashlytics', '~> 3.14.0'
 
+  pod 'react-native-shake', :path => '../node_modules/react-native-shake'
+
   target 'CoffeesnipeTests' do
     inherit! :search_paths
     # Pods for testing

@@ -24,11 +24,11 @@ class homeScreen extends Component {
            </ImageBackground>
         </View>
         <View style={styles.buttons}>
-          <View style={styles.buttonLeft}>
+          <View style={[styles.buttonLeft, width]}>
               <Image source={require('./assets/images/all/discount-icon.png')} style={styles.icons} />
               <Text style={styles.buttonText}>Aanbiedingen</Text>
           </View>
-          <View style={styles.buttonRight}>
+          <View style={[styles.buttonRight, width]}>
           <Image source={require('./assets/images/all/thumb-up-icon.png')} style={styles.icons} />
             <Text style={styles.buttonText}>Best beoordeeld</Text>
           </View>
@@ -142,28 +142,30 @@ class homeScreen extends Component {
 
     buttons:{
       flexDirection: 'row',
-      flex: 1,
+      flexWrap: 'wrap',
+      flex: 1
     },
     buttonLeft:{
-      width: Platform.OS === 'android' ? 180 : 189,
-
+      height: 100,
       backgroundColor: 'white',
       borderColor: '#707070',
       borderStyle:'solid',
-      borderWidth: 0.2,
+      borderWidth: 0.3,
       justifyContent: 'center',
       alignItems: 'center',
       paddingTop: 30,
+  
     },
     buttonRight:{
-      width: Platform.OS === 'android' ? 180 : 189,
+      height: 100,
       backgroundColor: 'white',
       borderColor: '#707070',
       borderStyle:'solid',
-      borderWidth: 0.2,
+      borderWidth: 0.3,
       justifyContent: 'center',
       alignItems: 'center',
       paddingTop: 30,
+  
     },
     buttonText:{
       fontSize: 13,

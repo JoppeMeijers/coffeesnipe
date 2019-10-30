@@ -105,6 +105,7 @@ android {
         applicationId "com.coffeesnipe"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
+        missingDimensionStrategy 'react-native-camera', 'general'
         versionCode 1
         versionName "1.0"
          multiDexEnabled true
@@ -139,6 +140,8 @@ android {
 }
 
 dependencies {
+    implementation project(':@react-native-community_async-storage')
+    implementation project(':react-native-camera')
     implementation project(':react-native-shake')
     implementation project(':react-native-firebase')
     implementation project(':react-native-vector-icons')

@@ -8,6 +8,7 @@ import LocationScreen from './src/locationScreen';
 import CoffeeScreen from './src/coffeeloversScreen';
 import ProfileScreen from './src/profileSceen';
 import ReviewScreen from './src/reviewScreen';
+import ScanScreen from './src/qrScreen';
 
 import IconHome from './src/assets/images/home.png'
 import IconLocation from './src/assets/images/location.png'
@@ -114,6 +115,21 @@ const HomeStack = createStackNavigator({
         },
       })
     },
+    Scan: {
+        screen: ScanScreen,
+        navigationOptions:({navigation})=>({
+           tabBarLabel:"Locaties",
+            tabBarIcon: ({ tintColor }) => (
+            < Icon  name="map-marker" size={22} color="#000"/>
+            )
+        ,
+          headerTitle: <Image source={Logo} />,
+          headerStyle: {
+            backgroundColor: '#7E4338',
+    
+          },
+        })
+      },
     Profile: {
         screen: ProfileStack ,
         navigationOptions:{

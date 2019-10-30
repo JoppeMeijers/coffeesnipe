@@ -23,6 +23,12 @@ target 'Coffeesnipe' do
 
   pod 'react-native-shake', :path => '../node_modules/react-native-shake'
 
+  pod 'react-native-camera', :path => '../node_modules/react-native-camera'
+
+  pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions'
+
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
+
   target 'CoffeesnipeTests' do
     inherit! :search_paths
     # Pods for testing
